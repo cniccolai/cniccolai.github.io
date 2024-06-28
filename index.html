@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Kisses & Pickle Jars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        h1 {
+            color: #ffa4b9;
+            font-weight: 300;
+        }
+        .message {
+            font-style: italic;
+            color: #666;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            user-select: none;
+            transition: all 3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For My Sweet Pickle</h1>
+        <p class="message">Sending you flying kisses and a jar full of love!</p>
+    </div>
+    <script>
+        const emojis = ['💋', '🥒'];
+        const numEmojis = 30;
+
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            document.body.appendChild(emoji);
+            moveEmoji(emoji);
+        }
+
+        function moveEmoji(emoji) {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            emoji.style.left = `${x}px`;
+            emoji.style.top = `${y}px`;
+            setTimeout(() => moveEmoji(emoji), 3000);
+        }
+
+        for (let i = 0; i < numEmojis; i++) {
+            createEmoji();
+        }
+    </script>
+</body>
+</html>
